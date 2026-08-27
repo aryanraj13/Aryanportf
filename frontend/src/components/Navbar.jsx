@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from "react-icons/fi";
+import {
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiMenu,
+  FiX,
+} from "react-icons/fi";
+
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { profile } from "../data/profile";
 import useActiveSection from "../hooks/useActiveSection";
 
@@ -13,6 +21,7 @@ const NAV_ITEMS = [
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
+  { id: "life-stories", label: "Life & Stories", route: "/life-stories" },
 ];
 
 export default function Navbar() {
@@ -22,7 +31,9 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const active = useActiveSection(
-    NAV_ITEMS.map((n) => n.id)
+    NAV_ITEMS
+      .filter((item) => !item.route)
+      .map((item) => item.id)
   );
 
   useEffect(() => {
@@ -33,10 +44,10 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const scrollTo = (id) => {
+  const scrollToSection = (id) => {
     setMenuOpen(false);
 
-    // If already on homepage, just scroll normally
+    // Already on home page
     if (location.pathname === "/") {
       const element = document.getElementById(id);
 
@@ -50,11 +61,10 @@ export default function Navbar() {
       return;
     }
 
-    // If on a project details page,
-    // navigate back to homepage first
+    // Coming from another page
     navigate("/");
 
-    // Wait for Home page to render, then scroll
+    // Wait for Home to render
     setTimeout(() => {
       const element = document.getElementById(id);
 
@@ -67,48 +77,77 @@ export default function Navbar() {
     }, 100);
   };
 
+  const handleNavClick = (item) => {
+    setMenuOpen(false);
+
+    // Life & Stories
+    if (item.route) {
+      navigate(item.route);
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      return;
+    }
+
+    // Normal Home sections
+    scrollToSection(item.id);
+  };
+
+  const isLifeStories = location.pathname === "/life-stories";
+
   return (
     <header className="sticky top-0 inset-x-0 z-50">
-      <div className="bg-bg/10 backdrop-blur-sm border-b border-border/20">
+      <div className="bg-bg/70 backdrop-blur-md border-b border-border/20">
         <nav className="container-px mx-auto max-w-7xl flex items-center justify-between h-14 md:h-16">
 
           {/* Logo */}
           <button
-            onClick={() => scrollTo("home")}
+            onClick={() => handleNavClick({ id: "home" })}
             className="font-display font-semibold text-heading text-base tracking-tight"
           >
-            Aryan<span className="text-primary">.</span>Rajput
+            Aryan
+            <span className="text-primary">.</span>
+            Rajput
           </button>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => scrollTo(item.id)}
-                  className={`relative px-3.5 py-1.5 text-sm rounded-full transition-colors ${
-                    active === item.id
-                      ? "text-heading"
-                      : "text-muted hover:text-heading"
-                  }`}
-                >
-                  {active === item.id && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-card border border-border"
-                      transition={{
-                        type: "spring",
-                        duration: 0.5,
-                      }}
-                    />
-                  )}
+            {NAV_ITEMS.map((item) => {
+              const itemActive = item.route
+                ? isLifeStories
+                : !isLifeStories && active === item.id;
 
-                  <span className="relative z-10">
-                    {item.label}
-                  </span>
-                </button>
-              </li>
-            ))}
+              return (
+                <li key={item.id}>
+                  <button
+                    onClick={() => handleNavClick(item)}
+                    className={`relative px-3.5 py-1.5 text-sm rounded-full transition-colors ${
+                      itemActive
+                        ? "text-heading"
+                        : "text-muted hover:text-heading"
+                    }`}
+                  >
+                    {itemActive && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 rounded-full bg-card border border-border"
+                        transition={{
+                          type: "spring",
+                          duration: 0.5,
+                        }}
+                      />
+                    )}
+
+                    <span className="relative z-10">
+                      {item.label}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Social Links */}
@@ -142,7 +181,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <button
             className="lg:hidden text-heading"
             onClick={() => setMenuOpen((v) => !v)}
@@ -157,7 +196,7 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -176,23 +215,28 @@ export default function Navbar() {
             className="lg:hidden glass-strong border-t border-border overflow-hidden"
           >
             <ul className="flex flex-col p-6 gap-1">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.id}>
-                  <button
-                    onClick={() => scrollTo(item.id)}
-                    className={`w-full text-left px-4 py-3 rounded-lg text-base ${
-                      active === item.id
-                        ? "text-primary bg-card"
-                        : "text-text hover:text-heading"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const itemActive = item.route
+                  ? isLifeStories
+                  : !isLifeStories && active === item.id;
+
+                return (
+                  <li key={item.id}>
+                    <button
+                      onClick={() => handleNavClick(item)}
+                      className={`w-full text-left px-4 py-3 rounded-lg text-base ${
+                        itemActive
+                          ? "text-primary bg-card"
+                          : "text-text hover:text-heading"
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
 
-            {/* Mobile Social Links */}
             <div className="flex items-center gap-5 px-6 pb-6">
               <a
                 href={profile.socials.github}

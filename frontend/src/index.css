@@ -135,3 +135,21 @@ textarea:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+@keyframes life-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-life-scroll {
+  animation: life-scroll 70s linear infinite;
+}
+
+.animate-life-scroll:hover {
+  animation-play-state: paused;
+}

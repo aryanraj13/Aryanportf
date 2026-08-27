@@ -1,7 +1,7 @@
 export const projects = [
   {
   id: "ai-assistant",
-  number: "06",
+  number: "01",
   name: "AI Assistant",
   tagline: "Agentic Email Assistant with LangGraph",
   category: ["Agentic AI", "LangGraph"],
@@ -68,7 +68,7 @@ export const projects = [
 },
   {
     id: "personal-brain",
-    number: "01",
+    number: "02",
     name: "Personal Brain",
     tagline: "AI Powered Cross-Source Assistant",
     category: ["Agentic AI", "RAG"],
@@ -119,7 +119,7 @@ export const projects = [
 
   {
     id: "expense-tracker",
-    number: "02",
+    number: "03",
     name: "Expense Tracker",
     tagline: "Secure Finance Management API",
     category: ["Backend", "Finance"],
@@ -190,7 +190,7 @@ export const projects = [
 
   {
     id: "votechain",
-    number: "03",
+    number: "04",
     name: "VoteChain",
     tagline: "Decentralized Voting System",
     category: ["Blockchain", "Web3"],
@@ -266,7 +266,7 @@ export const projects = [
 
   {
     id: "marketmentor",
-    number: "03",
+    number: "05",
     name: "MarketMentor",
     tagline: "GROQ Powered Stock Market Bot",
     category: ["Generative AI", "FinTech"],
@@ -332,7 +332,7 @@ export const projects = [
 
   {
     id: "boxzone",
-    number: "04",
+    number: "06",
     name: "BoxZone",
     tagline: "Full-Stack Ecommerce Platform",
     category: ["Full Stack", "Ecommerce"],
