@@ -1,0 +1,48 @@
+export const profile = {
+  name: "Aryan Rajput",
+  firstName: "Aryan",
+  lastName: "Rajput",
+  tag: "AI Engineer / Software Engineer",
+  roles: [
+    "AI Engineer",
+    "Software Engineer",
+    "Generative AI Developer",
+    "Full Stack Developer",
+  ],
+  summary:
+    "I build AI-powered applications, RAG systems, agentic workflows, and scalable full-stack solutions using Python, LangChain, LangGraph, React, Next.js, and Go.",
+  location: "India",
+  email: "aryanrajput200321@gmail.com",
+  socials: {
+    github: "https://github.com/aryanraj13",
+    linkedin: "https://www.linkedin.com/in/aryan-rajput-18895b289",
+    email: "mailto:aryanrajput200321@gmail.com",
+  },
+  resumeUrl: "https://drive.google.com/file/d/1m6Qt_eLyoytEUEIqgqDVeIQ2dGvE2WI3/view?usp=sharing",
+  highlights: ["AI", "Backend", "Frontend", "Generative AI", "Full Stack"],
+  terminal: {
+    whoami: ["Aryan Rajput", "AI Engineer", "Software Engineer"],
+    skills: [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Go",
+      "Node.js",
+      "LangChain",
+      "LangGraph",
+      "RAG",
+      "AI Agents",
+      "PostgreSQL",
+      "MongoDB",
+      "Docker",
+    ],
+    experience: [
+      "Software Engineering Intern",
+      "VARP TechLabs",
+      "Summer Research Intern",
+      "DRID Giant Project – JIIT",
+    ],
+  },
+};
