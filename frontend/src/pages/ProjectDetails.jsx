@@ -6,6 +6,7 @@ import {
   FiExternalLink,
 } from "react-icons/fi";
 import { projects } from "../data/projects";
+import ArchitectureViewer from "../components/ArchitectureViewer";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -35,7 +36,7 @@ export default function ProjectDetails() {
   return (
     <div className="min-h-screen container-px mx-auto max-w-5xl pt-16 pb-24">
 
-      {/* Back */}
+      {/* ================= BACK ================= */}
       <Link
         to="/"
         className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary mb-10 transition-colors"
@@ -68,7 +69,9 @@ export default function ProjectDetails() {
           <p className="text-text leading-relaxed max-w-3xl">
             {project.description}
           </p>
+
         </div>
+
 
         {/* ================= PROJECT LINKS ================= */}
         <div className="flex flex-wrap items-center gap-4 mb-12">
@@ -98,7 +101,9 @@ export default function ProjectDetails() {
               Live Demo
             </a>
           )}
+
         </div>
+
 
         {/* ================= MAIN PROJECT IMAGE ================= */}
         {project.image && (
@@ -118,16 +123,19 @@ export default function ProjectDetails() {
           </motion.div>
         )}
 
+
         {/* ================= TECH + FEATURES ================= */}
         <div className="grid md:grid-cols-2 gap-10 mb-16">
 
           {/* Tech Stack */}
           <div>
+
             <h2 className="font-mono text-xs text-muted uppercase tracking-widest mb-4">
               Tech Stack
             </h2>
 
             <div className="flex flex-wrap gap-2">
+
               {project.tech.map((tech) => (
                 <span
                   key={tech}
@@ -136,16 +144,21 @@ export default function ProjectDetails() {
                   {tech}
                 </span>
               ))}
+
             </div>
+
           </div>
+
 
           {/* Features */}
           <div>
+
             <h2 className="font-mono text-xs text-muted uppercase tracking-widest mb-4">
               Features
             </h2>
 
             <ul className="space-y-2">
+
               {project.features.map((feature) => (
                 <li
                   key={feature}
@@ -155,15 +168,32 @@ export default function ProjectDetails() {
                   {feature}
                 </li>
               ))}
+
             </ul>
+
           </div>
+
         </div>
+
+
+        {/* ========================================================= */}
+        {/*                    ARCHITECTURE VIEWER                    */}
+        {/* ========================================================= */}
+
+        {project.architecture && (
+          <ArchitectureViewer
+            architecture={project.architecture}
+          />
+        )}
+
 
         {/* ================= PROJECT WALKTHROUGH ================= */}
         {project.media?.length > 0 && (
           <section className="mb-16">
 
+            {/* Section Header */}
             <div className="mb-8">
+
               <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
                 Project Walkthrough
               </p>
@@ -171,15 +201,25 @@ export default function ProjectDetails() {
               <h2 className="font-display text-2xl sm:text-3xl font-semibold text-heading">
                 How it works
               </h2>
+
             </div>
 
+
+            {/* Walkthrough Items */}
             <div className="space-y-14">
 
               {project.media.map((item, index) => (
+
                 <motion.div
                   key={item.src}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{
+                    opacity: 0,
+                    y: 25,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
                   viewport={{
                     once: true,
                     margin: "-80px",
@@ -191,20 +231,31 @@ export default function ProjectDetails() {
                   className="grid md:grid-cols-2 gap-8 items-center"
                 >
 
-                  {/* Screenshot */}
+                  {/* ================= SCREENSHOT ================= */}
                   <div
-                    className={`rounded-2xl overflow-hidden border border-border bg-card ${
-                      index % 2 !== 0 ? "md:order-2" : ""
-                    }`}
+                    className={`
+                      rounded-2xl
+                      overflow-hidden
+                      border border-border
+                      bg-card
+                      ${
+                        index % 2 !== 0
+                          ? "md:order-2"
+                          : ""
+                      }
+                    `}
                   >
+
                     <img
                       src={item.src}
                       alt={`${project.name} screenshot ${index + 1}`}
                       className="w-full h-auto object-cover"
                     />
+
                   </div>
 
-                  {/* Description */}
+
+                  {/* ================= DESCRIPTION ================= */}
                   <div
                     className={
                       index % 2 !== 0
@@ -212,6 +263,7 @@ export default function ProjectDetails() {
                         : ""
                     }
                   >
+
                     <p className="font-mono text-xs text-primary mb-3">
                       {String(index + 1).padStart(2, "0")}
                     </p>
@@ -219,16 +271,20 @@ export default function ProjectDetails() {
                     <p className="text-text leading-relaxed">
                       {item.desc}
                     </p>
+
                   </div>
 
                 </motion.div>
+
               ))}
 
             </div>
+
           </section>
         )}
 
       </motion.div>
+
     </div>
   );
 }

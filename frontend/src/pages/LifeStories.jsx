@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
+import LifeMap from "../components/LifeMap";
 
 const movies = [
   {
@@ -189,12 +191,73 @@ const photos = [
   "photo_6319088815016364261_y.jpg",
 ];
 
-const encodePhoto = (filename) => `/photos/${encodeURIComponent(filename)}`;
+const encodePhoto = (filename) =>
+  `/photos/${encodeURIComponent(filename)}`;
+
+/*
+  Small personal captions for the gallery.
+  Each caption matches the photo position above.
+*/
+const photoCaptions = [
+  "Mountain air, clear mind.",
+  "A quiet moment on the road.",
+  "Somewhere worth getting lost.",
+  "Chasing light.",
+  "A view I had to keep.",
+  "The kind of evening you remember.",
+  "Roads, clouds, and no rush.",
+  "A little escape from the usual.",
+  "Found beauty in the ordinary.",
+  "A frame from the journey.",
+  "Old streets, new memories.",
+  "Late nights, good company.",
+  "Just another beautiful detour.",
+  "Moments between destinations.",
+  "The world looks different from here.",
+  "A place that stayed with me.",
+  "Good days deserve good frames.",
+  "Quiet places, loud memories.",
+  "Collected this moment.",
+  "One for the memory bank.",
+  "A pause worth taking.",
+  "Somewhere beyond the usual.",
+  "The view was enough.",
+  "Another page from the journey.",
+  "Light, distance, and a little wonder.",
+  "A moment outside the timeline.",
+  "Keeping this one forever.",
+  "Not every story needs words.",
+  "The road had its own story.",
+  "A beautiful kind of ordinary.",
+  "Where the day slowed down.",
+  "A memory in full frame.",
+  "Just living the moment.",
+  "A scene I didn't want to miss.",
+  "Worth the walk.",
+  "A little piece of the journey.",
+  "This one felt cinematic.",
+  "Somewhere between here and there.",
+  "The kind of moment photos are for.",
+  "A frame from real life.",
+  "No filter, just the moment.",
+  "A day worth remembering.",
+  "Another story outside the screen.",
+  "The world, for a second, stood still.",
+  "A small moment, kept forever.",
+  "One more memory from the road.",
+  "Life looked good here.",
+  "A quiet chapter.",
+  "This view said enough.",
+  "Just passing through, but not forgetting.",
+];
 
 export default function LifeStories() {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
   return (
     <div className="min-h-screen bg-bg text-text overflow-hidden">
-      {/* Hero */}
+
+      {/* ================= HERO ================= */}
       <section className="container-px mx-auto max-w-7xl pt-28 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -218,37 +281,38 @@ export default function LifeStories() {
         </motion.div>
 
         <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.97,
-              y: 30,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-            }}
-            className="mt-12 md:mt-16"
-          >
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
-              <img
-                src="/lifefront.png"
-                alt="Life and Stories"
-                className="w-full h-auto object-cover"
-              />
+          initial={{
+            opacity: 0,
+            scale: 0.97,
+            y: 30,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+          }}
+          className="mt-12 md:mt-16"
+        >
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
+            <img
+              src="https://kl3jbzqtybricdvz.private.blob.vercel-storage.com/lifefront.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfS2wzakJacXRZQlJJY0RWWiIsIm93bmVySWQiOiJ0ZWFtX3d0MkI1TGl6UFZtS2ZZYWFOdjBnNlM5eSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzg3OTUwODk1NDA3LCJpYXQiOjE3ODc5MDc2OTYwNzJ9.V9Nd560vjLnIhcsZfSYbZ56LJJ2UviKMH-UP9-nFXgs&vercel-blob-signature=lVFMaqISxa17HYXsrLX6LJScEV2-Tk9bnCzR_tzJdS0"
+              alt="Life and Stories"
+              className="w-full h-auto object-cover"
+            />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/30 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-t from-bg/30 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </motion.div>
       </section>
 
-      {/* Cinema */}
+      {/* ================= CINEMA ================= */}
       <section className="container-px mx-auto max-w-7xl pb-24">
         <div className="text-center mb-10">
+
           <p className="font-mono text-xs text-primary uppercase tracking-widest mb-3">
             Cinema
           </p>
@@ -267,10 +331,12 @@ export default function LifeStories() {
               href="https://boxd.it/bwBl5"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3 rounded-xl
-                         bg-card border border-border
-                         text-heading hover:border-primary
-                         hover:text-primary transition-all duration-300"
+              className="
+                inline-flex items-center gap-3 px-5 py-3 rounded-xl
+                bg-card border border-border
+                text-heading hover:border-primary
+                hover:text-primary transition-all duration-300
+              "
             >
               <span className="font-display font-semibold">
                 Letterboxd
@@ -283,12 +349,13 @@ export default function LifeStories() {
 
         {/* Movie Posters */}
         <div className="relative">
-          {/* Fade edges */}
+
           <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-r from-bg to-transparent" />
 
           <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-l from-bg to-transparent" />
 
           <div className="overflow-hidden">
+
             <motion.div
               className="flex gap-5 w-max"
               animate={{ x: ["0%", "-50%"] }}
@@ -301,20 +368,28 @@ export default function LifeStories() {
               {[...movies, ...movies].map((movie, index) => (
                 <div
                   key={`${movie.name}-${index}`}
-                  className="w-[150px] sm:w-[180px] md:w-[200px] flex-shrink-0 group"
+                  className="
+                    w-[150px] sm:w-[180px] md:w-[200px]
+                    flex-shrink-0 group
+                  "
                 >
                   <div className="overflow-hidden rounded-xl border border-border bg-card">
+
                     <img
                       src={movie.poster}
                       alt={movie.name}
-                      className="w-full aspect-[2/3] object-cover
-                                 transition-transform duration-500
-                                 group-hover:scale-105"
+                      className="
+                        w-full aspect-[2/3] object-cover
+                        transition-transform duration-500
+                        group-hover:scale-105
+                      "
                       loading="lazy"
                     />
+
                   </div>
 
                   <div className="mt-3">
+
                     <p className="text-sm text-heading font-medium truncate">
                       {movie.name}
                     </p>
@@ -324,28 +399,33 @@ export default function LifeStories() {
                         {movie.year}
                       </p>
                     )}
+
                   </div>
                 </div>
               ))}
             </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* Divider */}
+      {/* ================= DIVIDER ================= */}
       <div className="container-px mx-auto max-w-5xl">
         <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       </div>
 
-      {/* Photography */}
+      {/* ================= PHOTOGRAPHY ================= */}
       <section className="container-px mx-auto max-w-7xl py-24">
+
         <div className="text-center mb-12">
+
           <p className="font-mono text-xs text-primary uppercase tracking-widest mb-3">
             Photography
           </p>
 
           <h2 className="font-display text-4xl sm:text-5xl font-semibold text-heading">
-            Life through my <span className="text-primary">eyes.</span>
+            Life through my{" "}
+            <span className="text-primary">eyes.</span>
           </h2>
 
           <p className="text-secondary mt-5 max-w-xl mx-auto leading-relaxed">
@@ -359,10 +439,12 @@ export default function LifeStories() {
               href="https://in.pinterest.com/aryanraj_13/_pins/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3 rounded-xl
-                         bg-card border border-border
-                         text-heading hover:border-primary
-                         hover:text-primary transition-all duration-300"
+              className="
+                inline-flex items-center gap-3 px-5 py-3 rounded-xl
+                bg-card border border-border
+                text-heading hover:border-primary
+                hover:text-primary transition-all duration-300
+              "
             >
               <span className="font-display font-semibold">
                 Pinterest
@@ -371,9 +453,10 @@ export default function LifeStories() {
               <FiExternalLink size={15} />
             </a>
           </div>
+
         </div>
 
-        {/* Masonry Gallery */}
+        {/* ================= PHOTO GRID ================= */}
         <div
           className="
             columns-1
@@ -383,53 +466,251 @@ export default function LifeStories() {
             gap-5
           "
         >
+
           {photos.map((photo, index) => (
+
             <motion.div
               key={`${photo}-${index}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                margin: "-80px",
+              }}
               transition={{
                 duration: 0.5,
                 delay: Math.min(index * 0.03, 0.3),
               }}
               className="mb-5 break-inside-avoid"
             >
-              <div
+
+              <motion.button
+                type="button"
+                onClick={() =>
+                  setSelectedPhoto({
+                    src: encodePhoto(photo),
+                    caption:
+                      photoCaptions[index] ||
+                      "A moment worth remembering.",
+                    index,
+                  })
+                }
+                whileHover={{
+                  y: -3,
+                }}
+                whileTap={{
+                  scale: 0.985,
+                }}
                 className="
-                  group relative overflow-hidden rounded-2xl
-                  border border-border bg-card
+                  group relative block w-full overflow-hidden
+                  rounded-2xl border border-border bg-card
+                  text-left cursor-zoom-in
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-primary
                 "
+                aria-label={`Open photo ${index + 1}: ${
+                  photoCaptions[index] ||
+                  "A moment worth remembering."
+                }`}
               >
-                <img
+
+                {/* Image */}
+                <motion.img
                   src={encodePhoto(photo)}
-                  alt={`Life and stories ${index + 1}`}
+                  alt={
+                    photoCaptions[index] ||
+                    `Life and stories ${index + 1}`
+                  }
                   loading="lazy"
                   className="
                     w-full h-auto object-cover
                     transition-transform duration-700
-                    group-hover:scale-[1.03]
                   "
+                  whileHover={{
+                    scale: 1.06,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    ease: "easeOut",
+                  }}
                 />
 
-                {/* Hover overlay */}
+                {/* Film Grain */}
                 <div
                   className="
-                    absolute inset-0
-                    bg-gradient-to-t from-bg/50 via-transparent to-transparent
-                    opacity-0 group-hover:opacity-100
-                    transition-opacity duration-300
+                    pointer-events-none absolute inset-0
+                    opacity-[0.10] mix-blend-overlay
+                    bg-[url('https://grainy-gradients.vercel.app/noise.svg')]
                   "
                 />
-              </div>
+
+                {/* Hover Gradient */}
+                <div
+                  className="
+                    absolute inset-0 flex items-end
+                    bg-gradient-to-t
+                    from-black/75
+                    via-black/10
+                    to-transparent
+                    opacity-0
+                    group-hover:opacity-100
+                    transition-opacity duration-300
+                  "
+                >
+
+                  <div
+                    className="
+                      p-5
+                      translate-y-3
+                      group-hover:translate-y-0
+                      transition-transform duration-300
+                    "
+                  >
+
+                    <p
+                      className="
+                        font-mono text-[10px]
+                        uppercase tracking-[0.2em]
+                        text-white/60 mb-1
+                      "
+                    >
+                      {String(index + 1).padStart(2, "0")} /{" "}
+                      {photos.length}
+                    </p>
+
+                    <p className="text-sm sm:text-base font-medium text-white">
+                      {photoCaptions[index] ||
+                        "A moment worth remembering."}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </motion.button>
+
             </motion.div>
+
           ))}
+
         </div>
+
       </section>
 
-      {/* Bottom */}
+      {/* ================= FULLSCREEN PHOTO VIEWER ================= */}
+      {selectedPhoto && (
+
+        <div
+          className="
+            fixed inset-0 z-[100]
+            bg-black/95 backdrop-blur-md
+            flex items-center justify-center
+            p-4 sm:p-8
+          "
+          onClick={() => setSelectedPhoto(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Photo viewer"
+        >
+
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={() => setSelectedPhoto(null)}
+            className="
+              absolute top-5 right-5 z-10
+              h-10 w-10 rounded-full
+              border border-white/20
+              bg-white/10
+              text-white text-2xl
+              leading-none
+              hover:bg-white/20
+              transition
+            "
+            aria-label="Close photo viewer"
+          >
+            ×
+          </button>
+
+          {/* Image Container */}
+          <div
+            className="
+              relative max-w-6xl max-h-[90vh]
+              flex flex-col items-center
+            "
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <motion.img
+              initial={{
+                opacity: 0,
+                scale: 0.96,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              src={selectedPhoto.src}
+              alt={selectedPhoto.caption}
+              className="
+                max-h-[78vh]
+                max-w-full
+                w-auto
+                object-contain
+                rounded-lg
+                shadow-2xl
+              "
+            />
+
+            {/* Caption */}
+            <div className="mt-5 text-center">
+
+              <p
+                className="
+                  font-mono text-[10px]
+                  uppercase tracking-[0.25em]
+                  text-white/45
+                "
+              >
+                {String(selectedPhoto.index + 1).padStart(2, "0")} /{" "}
+                {photos.length}
+              </p>
+
+              <p className="mt-2 text-base sm:text-lg text-white/90">
+                {selectedPhoto.caption}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
+      {/* ================= BOTTOM ================= */}
       <section className="container-px mx-auto max-w-3xl pb-28 text-center">
-        <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-12" />
+
+        <div
+          className="
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-primary/30
+            to-transparent
+            mb-12
+          "
+        />
 
         <p className="font-mono text-xs text-primary uppercase tracking-widest mb-4">
           Life & Stories
@@ -443,7 +724,9 @@ export default function LifeStories() {
           These are some of the things that keep me curious, inspired, and
           grounded outside of software engineering.
         </p>
+
       </section>
+
     </div>
   );
 }
