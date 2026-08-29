@@ -299,8 +299,7 @@ export default function LifeStories() {
         >
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
             <img
-              src="https://kl3jbzqtybricdvz.private.blob.vercel-storage.com/lifefront.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfS2wzakJacXRZQlJJY0RWWiIsIm93bmVySWQiOiJ0ZWFtX3d0MkI1TGl6UFZtS2ZZYWFOdjBnNlM5eSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzg3OTUwODk1NDA3LCJpYXQiOjE3ODc5MDc2OTYwNzJ9.V9Nd560vjLnIhcsZfSYbZ56LJJ2UviKMH-UP9-nFXgs&vercel-blob-signature=lVFMaqISxa17HYXsrLX6LJScEV2-Tk9bnCzR_tzJdS0"
-              alt="Life and Stories"
+              src="https://fry5sjnh8pbbp45y.public.blob.vercel-storage.com/lifefront.png"
               className="w-full h-auto object-cover"
             />
 

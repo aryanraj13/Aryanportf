@@ -12,7 +12,7 @@ const COMMANDS = [
 const TYPE_SPEED = 10;
 
 const TERMINAL_BACKGROUND =
-  "https://kl3jbzqtybricdvz.private.blob.vercel-storage.com/photo_6060146018424569263_y.jpg?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfS2wzakJacXRZQlJJY0RWWiIsIm93bmVySWQiOiJ0ZWFtX3d0MkI1TGl6UFZtS2ZZYWFOdjBnNlM5eSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzg3OTYyNzAxNjY0LCJpYXQiOjE3ODc5MTk1MDI3MjR9.obCXjE9EMvqlh8yfNYbctdJexqxH6SbY7rSXd6rrJp8&vercel-blob-signature=Moy7zJr5KLFdbpD8mDTqgDZZe056ZeF5reFWcHawQhc";
+  "https://fry5sjnh8pbbp45y.public.blob.vercel-storage.com/photo_6060146018424569263_y.jpg";
 
 export default function Terminal() {
   const [renderedCommands, setRenderedCommands] = useState([]);
