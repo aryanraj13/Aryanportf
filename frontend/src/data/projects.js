@@ -24,13 +24,9 @@ export const projects = [
 
   features: [
     "Multi-Source News Scraping",
-    "AI-Powered Summarization",
     "Personalized News Ranking",
-    "YouTube Transcript Processing",
     "Automated Daily Digests",
     "Gmail Integration",
-    "PostgreSQL Persistence",
-    "Duplicate Prevention",
   ],
 
   github: "https://github.com/aryanraj13/AI-News",
