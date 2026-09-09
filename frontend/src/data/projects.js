@@ -1,7 +1,359 @@
 export const projects = [
   {
+  id: "ai-news-aggregator",
+  number: "01",
+  name: "AI News Aggregator",
+  tagline: "Personalized AI News Digest",
+  category: ["Generative AI", "Automation"],
+  icon: "newspaper",
+
+  description:
+    "An automated AI news aggregation system that collects the latest updates from OpenAI, Anthropic, and YouTube, uses Gemini to generate concise summaries and rank stories by relevance, and delivers a personalized daily digest through Gmail.",
+
+  tech: [
+    "Python",
+    "Google Gemini",
+    "LangChain",
+    "PostgreSQL",
+    "Supabase",
+    "SQLAlchemy",
+    "Gmail SMTP",
+    "Docker",
+    "Render",
+  ],
+
+  features: [
+    "Multi-Source News Scraping",
+    "AI-Powered Summarization",
+    "Personalized News Ranking",
+    "YouTube Transcript Processing",
+    "Automated Daily Digests",
+    "Gmail Integration",
+    "PostgreSQL Persistence",
+    "Duplicate Prevention",
+  ],
+
+  github: "https://github.com/aryanraj13/AI-News",
+  liveUrl: null,
+
+  image: "/ai-news.png",
+
+  architecture: {
+    title: "How AI News Aggregator works",
+
+    description:
+      "An automated news intelligence pipeline that collects AI news from multiple sources, processes and summarizes the content using Gemini, ranks stories according to the user's interests, and delivers a personalized daily digest through Gmail.",
+
+    nodes: [
+      {
+        id: "sources",
+        name: "News Sources",
+        type: "Data Sources",
+        icon: "rss",
+        layer: "top",
+        description:
+          "The system collects AI news from OpenAI, Anthropic, and YouTube sources, providing a diverse stream of current AI developments.",
+      },
+
+      {
+        id: "scrapers",
+        name: "Source Scrapers",
+        type: "Data Collection",
+        icon: "globe",
+        layer: "middle",
+        description:
+          "Dedicated scrapers retrieve articles, metadata, and YouTube videos from the configured sources while filtering content by the required time window.",
+      },
+
+      {
+        id: "processing",
+        name: "Content Processing",
+        type: "Processing Layer",
+        icon: "code",
+        layer: "bottom",
+        description:
+          "Articles and YouTube transcripts are cleaned and converted into structured content before being passed to the AI processing pipeline.",
+      },
+
+      {
+        id: "gemini",
+        name: "Google Gemini",
+        type: "AI Engine",
+        icon: "llm",
+        layer: "bottom",
+        description:
+          "Gemini generates structured summaries of the collected content and extracts the most important information from each story.",
+      },
+
+      {
+        id: "database",
+        name: "Supabase PostgreSQL",
+        type: "Database",
+        icon: "database",
+        layer: "bottom",
+        description:
+          "PostgreSQL stores collected articles, YouTube videos, generated digests, and processing state while preventing duplicate content from being processed repeatedly.",
+      },
+
+      {
+        id: "curator",
+        name: "AI Curator",
+        type: "Ranking Layer",
+        icon: "ai",
+        layer: "bottom",
+        description:
+          "The curator evaluates generated digests against the user's interests, expertise, and preferences to rank the most relevant AI stories.",
+      },
+
+      {
+        id: "email",
+        name: "Gmail",
+        type: "Delivery",
+        icon: "gmail",
+        layer: "bottom",
+        description:
+          "The final personalized digest is formatted into an email and delivered automatically through Gmail SMTP.",
+      },
+    ],
+
+    connections: [
+      {
+        from: "sources",
+        to: "scrapers",
+        label: "collect",
+      },
+
+      {
+        from: "scrapers",
+        to: "processing",
+        label: "raw content",
+      },
+
+      {
+        from: "processing",
+        to: "gemini",
+        label: "AI processing",
+      },
+
+      {
+        from: "gemini",
+        to: "database",
+        label: "store digest",
+      },
+
+      {
+        from: "database",
+        to: "curator",
+        label: "retrieve digests",
+      },
+
+      {
+        from: "curator",
+        to: "email",
+        label: "rank + generate",
+      },
+    ],
+
+    final: {
+      id: "digest",
+      name: "Personalized Daily Digest",
+      type: "Output",
+      icon: "mail",
+      description:
+        "The highest-ranked AI stories are compiled into a personalized daily email containing concise summaries and links to the original sources.",
+    },
+
+    finalLabel: "AI news → personalized digest",
+  },
+
+  media: [
+  {
+    src: "/ai-news-sources.png",
+    desc:
+      "The system aggregates AI news from sources including OpenAI, Anthropic, and YouTube, allowing multiple streams of AI-related content to be collected and processed through a unified pipeline.",
+  },
+
+  {
+    src: "/ai-news-digest.png",
+    desc:
+      "Each article is processed by Google Gemini to generate a concise, structured summary that captures the key information while preserving the original source and article context.",
+  },
+
+  {
+    src: "/ai-news-youtube.png",
+    desc:
+      "YouTube AI content is processed using video transcripts, allowing long-form AI discussions and news videos to be converted into structured information that can be summarized alongside written articles.",
+  },
+
+  {
+    src: "/ai-news-ranking.png",
+    desc:
+      "An AI curator evaluates and ranks generated digests according to the user's background, expertise, interests, and preferences so that the most relevant AI stories appear first.",
+  },
+
+  {
+    src: "/ai-news-email.png",
+    desc:
+      "The final personalized digest is automatically formatted and delivered through Gmail, providing the user with a daily collection of relevant AI news, concise summaries, and links to the original sources.",
+  },
+],
+},
+{
+    id: "personal-brain",
+    number: "02",
+    name: "Personal Brain",
+    tagline: "AI Powered Cross-Source Assistant",
+    category: ["Agentic AI", "RAG"],
+    icon: "brain",
+
+    description:
+      "A conversational AI assistant that retrieves and reasons over personal data from Gmail and Google Drive using a unified knowledge layer powered by GBrain.",
+
+    tech: [
+      "Next.js",
+      "AI Agent",
+      "RAG",
+      "GBrain",
+      "Google Gemini",
+    ],
+
+    features: [
+      "Gmail Integration",
+      "Google Drive Integration",
+      "Hybrid Retrieval",
+      "Cross-Source Reasoning",
+      "Context-Aware Responses",
+    ],
+
+    github: "https://github.com/aryanraj13/brian2",
+    liveUrl: "https://personalbrain-sooty.vercel.app/",
+
+    image: "/personalbrain.png",
+
+    architecture: {
+      title: "How Personal Brain works",
+
+      description:
+        "A cross-source RAG architecture that connects Gmail and Google Drive to a unified retrieval layer, allowing an AI agent to gather relevant personal context before Gemini generates the final response.",
+
+      nodes: [
+        {
+          id: "user",
+          name: "User",
+          type: "Input",
+          icon: "user",
+          layer: "top",
+          description:
+            "The user asks questions about their personal information using natural language.",
+        },
+
+        {
+          id: "nextjs",
+          name: "Next.js App",
+          type: "Frontend",
+          icon: "code",
+          layer: "middle",
+          description:
+            "The Next.js application provides the conversational interface and handles communication between the user and the AI system.",
+        },
+
+        {
+          id: "agent",
+          name: "AI Agent",
+          type: "Agent Layer",
+          icon: "ai",
+          layer: "bottom",
+          description:
+            "The AI agent interprets the user's question and determines what information needs to be retrieved before generating a response.",
+        },
+
+        {
+          id: "gmail",
+          name: "Gmail",
+          type: "Data Source",
+          icon: "gmail",
+          layer: "bottom",
+          description:
+            "Gmail provides personal email information that can be retrieved as relevant context for user queries.",
+        },
+
+        {
+          id: "drive",
+          name: "Google Drive",
+          type: "Data Source",
+          icon: "drive",
+          layer: "bottom",
+          description:
+            "Google Drive provides personal documents and files that can be searched and retrieved as part of the knowledge workflow.",
+        },
+
+        {
+          id: "retrieval",
+          name: "Hybrid Retrieval",
+          type: "RAG Layer",
+          icon: "retrieval",
+          layer: "bottom",
+          description:
+            "The retrieval layer searches across connected sources and combines relevant information into a unified context.",
+        },
+
+      ],
+
+      connections: [
+        {
+          from: "user",
+          to: "nextjs",
+          label: "question",
+        },
+
+        {
+          from: "nextjs",
+          to: "agent",
+          label: "query",
+        },
+
+        {
+          from: "agent",
+          to: "retrieval",
+          label: "retrieve",
+        },
+      ],
+
+      final: {
+        id: "gemini",
+        name: "Google Gemini",
+        type: "LLM",
+        icon: "llm",
+        description:
+          "Gemini receives the original user query together with retrieved context and generates the final context-aware response.",
+      },
+
+      finalLabel: "context + prompt",
+    },
+
+    media: [
+      {
+        src: "/personalbrain.png",
+        desc:
+          "Personal Brain provides a conversational AI interface for interacting with personal knowledge. Users can ask natural-language questions and receive context-aware responses generated from connected sources.",
+      },
+
+      {
+        src: "/chat1p.png",
+        desc:
+          "The chat interface enables users to query their connected knowledge base using natural language. Retrieved information is processed and passed to Gemini to generate relevant, context-aware answers.",
+      },
+
+      {
+        src: "/chat2p.png",
+        desc:
+          "The retrieval layer combines connected data sources into a unified knowledge workflow. Relevant context is retrieved before generation, improving the accuracy and relevance of responses to user queries.",
+      },
+    ],
+  },
+  {
     id: "ai-assistant",
-    number: "01",
+    number: "03",
     name: "AI Assistant",
     tagline: "Agentic Email Assistant with LangGraph",
     category: ["Agentic AI", "LangGraph"],
@@ -160,164 +512,9 @@ export const projects = [
       },
     ],
   },
-
-  {
-    id: "personal-brain",
-    number: "02",
-    name: "Personal Brain",
-    tagline: "AI Powered Cross-Source Assistant",
-    category: ["Agentic AI", "RAG"],
-    icon: "brain",
-
-    description:
-      "A conversational AI assistant that retrieves and reasons over personal data from Gmail and Google Drive using a unified knowledge layer powered by GBrain.",
-
-    tech: [
-      "Next.js",
-      "AI Agent",
-      "RAG",
-      "GBrain",
-      "Google Gemini",
-    ],
-
-    features: [
-      "Gmail Integration",
-      "Google Drive Integration",
-      "Hybrid Retrieval",
-      "Cross-Source Reasoning",
-      "Context-Aware Responses",
-    ],
-
-    github: "https://github.com/aryanraj13/brian2",
-    liveUrl: "https://personalbrain-sooty.vercel.app/",
-
-    image: "/personalbrain.png",
-
-    architecture: {
-      title: "How Personal Brain works",
-
-      description:
-        "A cross-source RAG architecture that connects Gmail and Google Drive to a unified retrieval layer, allowing an AI agent to gather relevant personal context before Gemini generates the final response.",
-
-      nodes: [
-        {
-          id: "user",
-          name: "User",
-          type: "Input",
-          icon: "user",
-          layer: "top",
-          description:
-            "The user asks questions about their personal information using natural language.",
-        },
-
-        {
-          id: "nextjs",
-          name: "Next.js App",
-          type: "Frontend",
-          icon: "code",
-          layer: "middle",
-          description:
-            "The Next.js application provides the conversational interface and handles communication between the user and the AI system.",
-        },
-
-        {
-          id: "agent",
-          name: "AI Agent",
-          type: "Agent Layer",
-          icon: "ai",
-          layer: "bottom",
-          description:
-            "The AI agent interprets the user's question and determines what information needs to be retrieved before generating a response.",
-        },
-
-        {
-          id: "gmail",
-          name: "Gmail",
-          type: "Data Source",
-          icon: "gmail",
-          layer: "bottom",
-          description:
-            "Gmail provides personal email information that can be retrieved as relevant context for user queries.",
-        },
-
-        {
-          id: "drive",
-          name: "Google Drive",
-          type: "Data Source",
-          icon: "drive",
-          layer: "bottom",
-          description:
-            "Google Drive provides personal documents and files that can be searched and retrieved as part of the knowledge workflow.",
-        },
-
-        {
-          id: "retrieval",
-          name: "Hybrid Retrieval",
-          type: "RAG Layer",
-          icon: "retrieval",
-          layer: "bottom",
-          description:
-            "The retrieval layer searches across connected sources and combines relevant information into a unified context.",
-        },
-
-      ],
-
-      connections: [
-        {
-          from: "user",
-          to: "nextjs",
-          label: "question",
-        },
-
-        {
-          from: "nextjs",
-          to: "agent",
-          label: "query",
-        },
-
-        {
-          from: "agent",
-          to: "retrieval",
-          label: "retrieve",
-        },
-      ],
-
-      final: {
-        id: "gemini",
-        name: "Google Gemini",
-        type: "LLM",
-        icon: "llm",
-        description:
-          "Gemini receives the original user query together with retrieved context and generates the final context-aware response.",
-      },
-
-      finalLabel: "context + prompt",
-    },
-
-    media: [
-      {
-        src: "/personalbrain.png",
-        desc:
-          "Personal Brain provides a conversational AI interface for interacting with personal knowledge. Users can ask natural-language questions and receive context-aware responses generated from connected sources.",
-      },
-
-      {
-        src: "/chat1p.png",
-        desc:
-          "The chat interface enables users to query their connected knowledge base using natural language. Retrieved information is processed and passed to Gemini to generate relevant, context-aware answers.",
-      },
-
-      {
-        src: "/chat2p.png",
-        desc:
-          "The retrieval layer combines connected data sources into a unified knowledge workflow. Relevant context is retrieved before generation, improving the accuracy and relevance of responses to user queries.",
-      },
-    ],
-  },
-
   {
     id: "expense-tracker",
-    number: "03",
+    number: "04",
     name: "Expense Tracker",
     tagline: "Secure Finance Management API",
     category: ["Backend", "Finance"],
@@ -494,7 +691,7 @@ export const projects = [
 
   {
     id: "votechain",
-    number: "04",
+    number: "05",
     name: "VoteChain",
     tagline: "Decentralized Voting System",
     category: ["Blockchain", "Web3"],
@@ -670,7 +867,7 @@ export const projects = [
 
   {
     id: "marketmentor",
-    number: "05",
+    number: "06",
     name: "MarketMentor",
     tagline: "GROQ Powered Stock Market Bot",
     category: ["Generative AI", "FinTech"],
@@ -847,7 +1044,7 @@ export const projects = [
 
   {
     id: "boxzone",
-    number: "06",
+    number: "07",
     name: "BoxZone",
     tagline: "Full-Stack Ecommerce Platform",
     category: ["Full Stack", "Ecommerce"],
