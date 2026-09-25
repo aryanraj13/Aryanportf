@@ -1,4 +1,185 @@
 export const projects = [
+    {
+    id: "moviestream",
+    number: "07",
+    name: "MovieStream",
+    tagline: "AI-Powered Movie Streaming & Recommendation Platform",
+    category: ["Generative AI", "Full Stack"],
+    icon: "film",
+
+    description:
+      "An AI-powered movie platform built with React and Go that combines movie discovery, user authentication, reviews, ratings, and personalized movie recommendations using Google Gemini.",
+
+    tech: [
+      "React.js",
+      "Vite",
+      "Go",
+      "Gin",
+      "MongoDB",
+      "JWT",
+      "Google Gemini",
+      "LangChainGo",
+      "Tailwind CSS",
+      "Axios",
+    ],
+
+    features: [
+      "AI-Powered Movie Recommendations",
+      "JWT Authentication",
+      "Movie Discovery",
+      "Movie Reviews & Ratings",
+      "Protected API Routes",
+      "MongoDB Integration",
+      "RESTful Go API",
+    ],
+
+    github: "https://github.com/aryanraj13/MovieStream",
+    liveUrl: "https://moviestream-gamma.vercel.app/",
+
+    image: "/mov1.png",
+
+    architecture: {
+      title: "How MovieStream works",
+
+      description:
+        "A full-stack AI-powered movie platform where the React frontend communicates with a Go and Gin REST API, authenticated requests are protected using JWT, movie and user data are stored in MongoDB, and Google Gemini generates personalized movie recommendations.",
+
+      nodes: [
+        {
+          id: "user",
+          name: "User",
+          type: "Client",
+          icon: "user",
+          layer: "top",
+
+          description:
+            "Users interact with MovieStream to discover movies, authenticate, rate and review movies, and receive personalized recommendations.",
+        },
+
+        {
+          id: "frontend",
+          name: "React + Vite",
+          type: "Frontend",
+          icon: "code",
+          layer: "middle",
+
+          description:
+            "The React frontend provides the movie discovery interface, authentication screens, movie details, reviews, ratings, and AI recommendation experience.",
+        },
+
+        {
+          id: "api",
+          name: "Go + Gin API",
+          type: "Backend",
+          icon: "code",
+          layer: "bottom",
+
+          description:
+            "The Go backend exposes RESTful APIs for authentication, users, movies, reviews, ratings, and AI-powered recommendation functionality.",
+        },
+
+        {
+          id: "auth",
+          name: "JWT Authentication",
+          type: "Security",
+          icon: "user",
+          layer: "bottom",
+
+          description:
+            "JWT authentication protects private API endpoints and ensures that authenticated users can securely access user-specific functionality.",
+        },
+
+        {
+          id: "mongodb",
+          name: "MongoDB",
+          type: "Database",
+          icon: "database",
+          layer: "bottom",
+
+          description:
+            "MongoDB stores users, movie information, reviews, ratings, and other application data used by the platform.",
+        },
+
+        {
+          id: "gemini",
+          name: "Google Gemini",
+          type: "AI Engine",
+          icon: "llm",
+          layer: "bottom",
+
+          description:
+            "Google Gemini processes movie-related information and user preferences to generate AI-powered movie recommendations and insights.",
+        },
+      ],
+
+      connections: [
+        {
+          from: "user",
+          to: "frontend",
+          label: "interaction",
+        },
+
+        {
+          from: "frontend",
+          to: "api",
+          label: "API request",
+        },
+
+        {
+          from: "api",
+          to: "auth",
+          label: "authenticate",
+        },
+
+        {
+          from: "api",
+          to: "mongodb",
+          label: "data access",
+        },
+
+        {
+          from: "api",
+          to: "gemini",
+          label: "AI request",
+        },
+      ],
+
+      final: {
+        id: "recommendations",
+        name: "AI Movie Recommendations",
+        type: "Output",
+        icon: "ai",
+
+        description:
+          "Movie data and user preferences are processed through the AI layer to generate personalized movie recommendations that are returned to the React application.",
+      },
+
+      finalLabel: "user preferences → AI recommendations",
+    },
+
+    media: [
+  {
+    src: "/mov3.png",
+    desc:
+      "MovieStream features a modern movie discovery interface where users can browse and explore movies through a clean, responsive experience. The platform brings movie information, discovery, ratings, reviews, and AI-powered recommendations together in a single application, allowing users to easily find movies and interact with content based on their interests.",
+  },
+  {
+    src: "/mov2.png",
+    desc:
+      "MovieStream includes a secure authentication system built with JWT, allowing users to create an account and securely log in to the platform. Authentication is handled through the Go and Gin backend, while protected API routes ensure that user-specific features such as reviews, ratings, and personalized recommendations are accessible only to authenticated users.",
+  },
+  {
+    src: "/mov1.png",
+    desc:
+      "The movie details interface provides users with detailed information about individual movies along with interactive rating and review functionality. Authenticated users can share their opinions and ratings, while the backend stores this information in MongoDB and connects it with the user's account to support a more personalized movie experience.",
+  },
+  {
+    src: "/mov4.png",
+    desc:
+      "MovieStream integrates Google Gemini as its generative AI layer to provide personalized movie recommendations. The recommendation system can use available movie information and user preferences to generate relevant suggestions, demonstrating how a traditional full-stack movie platform can be enhanced with Generative AI for a more personalized discovery experience.",
+  },
+],
+  },
   {
   id: "ai-news-aggregator",
   number: "01",
