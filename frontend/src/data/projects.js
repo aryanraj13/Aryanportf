@@ -1,7 +1,172 @@
 export const projects = [
+  {
+    id: "movie-discovery",
+    number: "01",
+    name: "Movie Discovery App",
+    tagline: "Cross-Platform Movie Discovery & Trending Platform",
+    category: ["Mobile Development", "Full Stack"],
+
+    icon: "film",
+
+    description:
+      "A cross-platform movie discovery application built with React Native and Expo that enables users to explore, search, and discover movies using real-time TMDB data, with Appwrite-powered search tracking to identify trending movies based on user engagement.",
+
+    tech: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "NativeWind",
+      "Appwrite",
+      "TMDB API",
+      "Tailwind CSS",
+    ],
+
+    features: [
+      "Movie Discovery",
+      "Real-Time Movie Data",
+      "Movie Search",
+      "Trending Movies",
+      "Search Popularity Tracking",
+      "Appwrite Integration",
+      "Cross-Platform Support",
+      "Reusable UI Components",
+    ],
+
+    github: "https://github.com/aryanraj13/Movie-Discovery-App",
+
+    image: "/f1.png",
+
+    architecture: {
+      title: "How Movie Discovery App works",
+
+      description:
+        "A cross-platform mobile application where users discover and search for movies through a React Native and Expo interface. The TMDB API provides real-time movie information, while Appwrite stores search activity and tracks movie popularity to generate dynamically ranked trending movies.",
+
+      nodes: [
+        {
+          id: "user",
+          name: "User",
+          type: "Client",
+          icon: "user",
+          layer: "top",
+
+          description:
+            "Users interact with the mobile application to browse featured movies, explore popular titles, search for movies, and discover trending content.",
+        },
+
+        {
+          id: "frontend",
+          name: "React Native + Expo",
+          type: "Mobile Frontend",
+          icon: "smartphone",
+          layer: "middle",
+
+          description:
+            "The React Native application built with Expo provides the cross-platform mobile interface, navigation, movie discovery screens, search functionality, and reusable UI components for Android and iOS.",
+        },
+
+        {
+          id: "services",
+          name: "API Services",
+          type: "Integration Layer",
+          icon: "code",
+          layer: "bottom",
+
+          description:
+            "The services layer handles communication with external APIs, manages movie data requests, processes search queries, and connects the application with TMDB and Appwrite.",
+        },
+
+        {
+          id: "tmdb",
+          name: "TMDB API",
+          type: "Movie Data API",
+          icon: "database",
+          layer: "bottom",
+
+          description:
+            "TMDB provides real-time movie information, including titles, posters, descriptions, ratings, release dates, and movie search results.",
+        },
+
+        {
+          id: "appwrite",
+          name: "Appwrite",
+          type: "Backend Services",
+          icon: "database",
+          layer: "bottom",
+
+          description:
+            "Appwrite stores movie search activity and maintains search popularity data, enabling the application to track user engagement and identify trending movies.",
+        },
+      ],
+
+      connections: [
+        {
+          from: "user",
+          to: "frontend",
+          label: "user interaction",
+        },
+
+        {
+          from: "frontend",
+          to: "services",
+          label: "API requests",
+        },
+
+        {
+          from: "services",
+          to: "tmdb",
+          label: "movie data",
+        },
+
+        {
+          from: "services",
+          to: "appwrite",
+          label: "search tracking",
+        },
+      ],
+
+      final: {
+        id: "trending",
+        name: "Trending Movies",
+        type: "Output",
+        icon: "trending-up",
+
+        description:
+          "Appwrite processes stored search activity to identify popular movies based on user engagement. The resulting trending movie data is displayed in the application alongside real-time movie information from TMDB.",
+      },
+
+      finalLabel: "movie searches → popularity tracking → trending movies",
+    },
+
+    media: [
+      {
+        src: "/f1.png",
+        desc:
+          "The Movie Discovery App features a modern mobile interface built with React Native and Expo, allowing users to explore featured and popular movies. The home screen presents movie posters and essential movie information through a responsive, visually engaging layout, providing a seamless movie discovery experience across Android and iOS devices.",
+      },
+
+      {
+        src: "/f2.png",
+        desc:
+          "The movie discovery interface integrates the TMDB API to fetch real-time movie information, including movie titles, posters, ratings, descriptions, and release dates. Users can browse available movie collections and explore detailed information about their favorite titles through an intuitive mobile experience.",
+      },
+
+      {
+        src: "/f3.png",
+        desc:
+          "The application provides movie search functionality that allows users to find movies by entering their titles. Search queries are processed through the TMDB API to retrieve relevant movie results, while Appwrite records search activity to help identify popular movies based on user engagement.",
+      },
+
+      {
+        src: "/f4.png",
+        desc:
+          "Movie Discovery App integrates Appwrite as its backend service for storing and tracking movie search activity. Search popularity is used to identify trending movies, allowing the application to dynamically highlight titles that receive greater user interest and improve the overall movie discovery experience.",
+      },
+    ],
+  },
     {
     id: "moviestream",
-    number: "07",
+    number: "02",
     name: "MovieStream",
     tagline: "AI-Powered Movie Streaming & Recommendation Platform",
     category: ["Generative AI", "Full Stack"],
@@ -182,7 +347,7 @@ export const projects = [
   },
   {
   id: "ai-news-aggregator",
-  number: "01",
+  number: "03",
   name: "AI News Aggregator",
   tagline: "Personalized AI News Digest",
   category: ["Generative AI", "Automation"],
@@ -377,7 +542,7 @@ export const projects = [
 },
 {
     id: "personal-brain",
-    number: "02",
+    number: "04",
     name: "Personal Brain",
     tagline: "AI Powered Cross-Source Assistant",
     category: ["Agentic AI", "RAG"],
@@ -530,7 +695,7 @@ export const projects = [
   },
   {
     id: "ai-assistant",
-    number: "03",
+    number: "05",
     name: "AI Assistant",
     tagline: "Agentic Email Assistant with LangGraph",
     category: ["Agentic AI", "LangGraph"],
@@ -691,7 +856,7 @@ export const projects = [
   },
   {
     id: "expense-tracker",
-    number: "04",
+    number: "06",
     name: "Expense Tracker",
     tagline: "Secure Finance Management API",
     category: ["Backend", "Finance"],
@@ -868,7 +1033,7 @@ export const projects = [
 
   {
     id: "votechain",
-    number: "05",
+    number: "07",
     name: "VoteChain",
     tagline: "Decentralized Voting System",
     category: ["Blockchain", "Web3"],
@@ -1044,7 +1209,7 @@ export const projects = [
 
   {
     id: "marketmentor",
-    number: "06",
+    number: "08",
     name: "MarketMentor",
     tagline: "GROQ Powered Stock Market Bot",
     category: ["Generative AI", "FinTech"],
@@ -1221,7 +1386,7 @@ export const projects = [
 
   {
     id: "boxzone",
-    number: "07",
+    number: "09",
     name: "BoxZone",
     tagline: "Full-Stack Ecommerce Platform",
     category: ["Full Stack", "Ecommerce"],
